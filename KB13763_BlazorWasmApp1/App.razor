@@ -1,0 +1,38 @@
+﻿
+<div style="text-align: center;">
+    <IgbHierarchicalGrid Data="_categories" Width="100%" Height="100%"
+                         AutoGenerate="false"
+                         DisplayDensity="DisplayDensity.Compact"
+                         PrimaryKey="CategoryID" HasChildrenKey="HasProducts">
+        <IgbColumn Field="CategoryID"></IgbColumn>
+        <IgbColumn Field="CategoryName"></IgbColumn>
+        <IgbRowIsland ChildDataKey="Products" AutoGenerate="false">
+            <IgbColumn Field="ProductID"></IgbColumn>
+            <IgbColumn Field="ProductName"></IgbColumn>
+        </IgbRowIsland>
+    </IgbHierarchicalGrid>
+</div>
+
+
+@code {
+    private List<Category> _categories = new(){
+        new() {
+            CategoryID = 1, CategoryName = "Category 1",
+            Products = new (){
+                new() { ProductID = 1, ProductName = "C1-Product 1"},
+                new() { ProductID = 2, ProductName = "C1-Product 2"},
+                new() { ProductID = 3, ProductName = "C1-Product 3"},
+            }
+        },
+        new() {
+            CategoryID = 2, CategoryName = "Category 2",
+        },
+        new() {
+            CategoryID = 3, CategoryName = "Category 3",
+            Products = new (){
+                new() { ProductID = 4, ProductName = "C3-Product 4"},
+                new() { ProductID = 5, ProductName = "C3-Product 5"},
+            }
+        },
+    };
+}
